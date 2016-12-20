@@ -152,4 +152,11 @@ class DoublyLinkedList {
         let target = this._getNode(index)
         this._remove(target)
     }
+
+    get(index) {
+        if(index < 0 || index >= this.length)
+            throw "out of index"
+    
+        return this._getNode(index).data
+    }
 }
