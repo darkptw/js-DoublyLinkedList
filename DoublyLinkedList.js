@@ -42,12 +42,12 @@ class DoublyLinkedList {
     }
 
     set(index, data) {
-        _checkIndex(index)
+        this._checkIndex(index)
         this._getNode(index).data = data
     }
     
     get(index) {
-       _checkIndex(index)
+        this._checkIndex(index)
         return this._getNode(index).data
     }
 
@@ -74,13 +74,13 @@ class DoublyLinkedList {
     }
 
     insert(index, data) {
-        _checkIndex(index)
+        this._checkIndex(index)
         let target = this._getNode(index)
         this._insert(target, data)
     }
 
     remove(index) {
-        _checkIndex(index)
+        this._checkIndex(index)
         let target = this._getNode(index)
         this._remove(target)
     }
