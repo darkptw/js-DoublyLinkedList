@@ -140,10 +140,10 @@ class DoublyLinkedList {
         return filtered
     }
 
-    indexOf(searchE, fromIndex = 0) {
+    indexOf(searchData, fromIndex = 0) {
         let travel = this._getNode(fromIndex)
         for(let i=fromIndex; travel != this.sentinel; travel = travel.next, ++i)
-            if(travel.data == searchE)
+            if(travel.data == searchData)
                 return i
         return -1
     }
