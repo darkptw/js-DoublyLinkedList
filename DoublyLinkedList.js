@@ -40,6 +40,11 @@ class DoublyLinkedList {
         if(index < 0 || index >= this.length)
             throw "out of index"
     }
+    
+    _checkIndexAllowedEnd(index) {
+        if(index < 0 || index > this.length)
+            throw "out of index"
+    }
 
     set(index, data) {
         this._checkIndex(index)
@@ -74,7 +79,7 @@ class DoublyLinkedList {
     }
 
     insert(index, data) {
-        this._checkIndex(index)
+        this._checkIndexAllowedEnd(index)
         let target = this._getNode(index)
         this._insert(target, data)
     }
@@ -147,6 +152,19 @@ class DoublyLinkedList {
                 return i
         return -1
     }
+    
+    slice(begin, end) {
+		this._checkIndex(begin)
+		this._checkIndexAllowedEnd(end)		
+		if(begin >= end)
+			throw "beginIndex must less than endIndex"
+		
+		let sliced = new DoublyLinkedList()
+		let travel = this._getNode(begin)
+		for(let i=begin; i < end; travel = travel.next, ++i)
+			sliced.push(travel.data)
+		return sliced
+	}
 
     [Symbol.iterator]() {    
         return {
