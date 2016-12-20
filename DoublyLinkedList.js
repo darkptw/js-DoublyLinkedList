@@ -8,7 +8,7 @@ class DoublyLinkedList {
 			}
 		}
 		
-		this.sentinel = new this.Node(-1, null, null)
+		this.sentinel = new this.Node()
 		this.sentinel.prev = this.sentinel.next = this.sentinel		
 		this.length = 0
 	}
@@ -27,8 +27,8 @@ class DoublyLinkedList {
 		let lastNode = this.sentinel.prev
 		let prevLastNode = lastNode.prev
 		lastNode.prev = lastNode.next = null
-		prevLastNode.next = this.sentinel
 		this.sentinel.prev = prevLastNode
+		prevLastNode.next = this.sentinel
 		--this.length
 	}
 	
@@ -46,8 +46,8 @@ class DoublyLinkedList {
 		let firstNode = this.sentinel.next
 		let secondNode = firstNode.next
 		firstNode.prev = firstNode.next = null
-		this.sentinel.next = secondNode
 		secondNode.prev = this.sentinel
+		this.sentinel.next = secondNode
 		--this.length
 	}
 	
@@ -105,10 +105,7 @@ class DoublyLinkedList {
 	
 	filter(pred) {
 		let filtered = new DoublyLinkedList()
-		this.forEach(e => {
-			if(pred(e))
-				filtered.push(e)
-		})
+		this.forEach(e => pred(e) && filtered.push(e))
 		return filtered
 	}
 	
