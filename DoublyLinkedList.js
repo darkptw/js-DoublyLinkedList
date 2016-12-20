@@ -22,7 +22,7 @@ class DoublyLinkedList {
     
     pop() {
         if(this.length == 0)
-            return
+            return undefined
         
         let lastNode = this.sentinel.prev
         let prevLastNode = lastNode.prev
@@ -30,6 +30,7 @@ class DoublyLinkedList {
         this.sentinel.prev = prevLastNode
         prevLastNode.next = this.sentinel
         --this.length
+        return lastNode.data
     }
     
     unshift(data) {
@@ -41,7 +42,7 @@ class DoublyLinkedList {
     
     shift() {
         if(this.length == 0)
-            return
+            return undefined
             
         let firstNode = this.sentinel.next
         let secondNode = firstNode.next
@@ -49,6 +50,7 @@ class DoublyLinkedList {
         secondNode.prev = this.sentinel
         this.sentinel.next = secondNode
         --this.length
+        return firstNode.data
     }
     
     forEach(func) {
