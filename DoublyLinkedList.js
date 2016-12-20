@@ -133,4 +133,33 @@ class DoublyLinkedList {
             }
         }
     }
+    
+    insert(index, data) {
+        if(index < 0 || index > this.length)
+            throw "out of index"
+            
+        let target = this.sentinel.next
+        for(let i=0; i<index; ++i)
+            target = target.next
+        
+        let newNode = new this.Node(data, target.prev, target)
+        target.prev.next = target.prev = newNode
+        ++this.length
+    }
+    
+    remove(index) {
+        if(index < 0 || index >= this.length)
+            throw "out of index"
+        
+        let target = this.sentinel.next
+        for(let i=0; i<index; ++i)
+            target = target.next
+        
+        let prevNode = target.prev
+        let nextNode = target.next
+        target.prev = target.next = null
+        nextNode.prev = prevNode
+        prevNode.next = nextNode
+        --this.length
+    }
 }
