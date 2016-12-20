@@ -74,10 +74,7 @@ class DoublyLinkedList {
     }
     
     static of(...vals) {
-        let list = new DoublyLinkedList()
-        for(let v of vals)
-            list.push(v)
-        return list
+        return DoublyLinkedList.from(vals)
     }
     
     static from(iterable) {
