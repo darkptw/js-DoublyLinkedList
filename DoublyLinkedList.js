@@ -147,7 +147,7 @@ class DoublyLinkedList {
 
     indexOf(searchData, fromIndex = 0) {
         let travel = this._getNode(fromIndex)
-        for(let i=fromIndex; travel != this.sentinel; travel = travel.next, ++i)
+        for(let i = fromIndex; travel != this.sentinel; travel = travel.next, ++i)
             if(travel.data == searchData)
                 return i
         return -1
@@ -161,7 +161,7 @@ class DoublyLinkedList {
 
         let sliced = new DoublyLinkedList()
         let travel = this._getNode(begin)
-        for(let i=begin; i < end; travel = travel.next, ++i)
+        for(let i = begin; i < end; travel = travel.next, ++i)
             sliced.push(travel.data)
         return sliced
     }
