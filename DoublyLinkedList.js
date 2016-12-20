@@ -154,17 +154,17 @@ class DoublyLinkedList {
     }
     
     slice(begin, end) {
-		this._checkIndex(begin)
-		this._checkIndexAllowedEnd(end)		
-		if(begin >= end)
-			throw "beginIndex must less than endIndex"
-		
-		let sliced = new DoublyLinkedList()
-		let travel = this._getNode(begin)
-		for(let i=begin; i < end; travel = travel.next, ++i)
-			sliced.push(travel.data)
-		return sliced
-	}
+        this._checkIndex(begin)
+        this._checkIndexAllowedEnd(end)		
+        if(begin >= end)
+            throw "beginIndex must less than endIndex"
+
+        let sliced = new DoublyLinkedList()
+        let travel = this._getNode(begin)
+        for(let i=begin; i < end; travel = travel.next, ++i)
+            sliced.push(travel.data)
+        return sliced
+    }
 
     [Symbol.iterator]() {    
         return {
