@@ -35,6 +35,21 @@ class DoublyLinkedList {
         --this.length
         return target.data
     }
+    
+    _checkIndex(index) {
+        if(index < 0 || index >= this.length)
+            throw "out of index"
+    }
+
+    set(index, data) {
+        _checkIndex(index)
+        this._getNode(index).data = data
+    }
+    
+    get(index) {
+       _checkIndex(index)
+        return this._getNode(index).data
+    }
 
     push(data) {
         this._insert(this.sentinel, data)
@@ -56,6 +71,18 @@ class DoublyLinkedList {
             return undefined
     
         return this._remove(this.sentinel.next)
+    }
+
+    insert(index, data) {
+        _checkIndex(index)
+        let target = this._getNode(index)
+        this._insert(target, data)
+    }
+
+    remove(index) {
+        _checkIndex(index)
+        let target = this._getNode(index)
+        this._remove(target)
     }
 
     forEach(func) {
@@ -135,28 +162,5 @@ class DoublyLinkedList {
                 return { value: data, done: false }
             }
         }
-    }
-
-    insert(index, data) {
-        if(index < 0 || index > this.length)
-            throw "out of index"
-        
-        let target = this._getNode(index)
-        this._insert(target, data)
-    }
-
-    remove(index) {
-        if(index < 0 || index >= this.length)
-            throw "out of index"
-    
-        let target = this._getNode(index)
-        this._remove(target)
-    }
-
-    get(index) {
-        if(index < 0 || index >= this.length)
-            throw "out of index"
-    
-        return this._getNode(index).data
     }
 }
